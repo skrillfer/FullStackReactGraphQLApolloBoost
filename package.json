@@ -1,0 +1,37 @@
+{
+  "name": "fullstackreactgraphqlapolloboost",
+  "version": "1.0.0",
+  "description": "Full-Stack React with GraphQL and Apollo Boost",
+  "main": "server.js",
+  "scripts": {
+    "server": "nodemon server.js",
+    "client": "cd client && npm start",
+    "dev": "concurrently --names \"server,client\" \"npm run server --silent\" \"npm run client --silent\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skrillfer/FullStackReactGraphQLApolloBoost.git"
+  },
+  "author": "Luis Fernando Ramirez Santos",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server-express": "^2.9.13",
+    "bcrypt": "^3.0.7",
+    "body-parser": "^1.19.0",
+    "concurrently": "^5.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "graphql": "^14.5.8",
+    "graphql-tools": "^4.0.6"
+  },
+  "devDependencies": {
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.7.13",
+    "nodemon": "^2.0.1"
+  },
+  "bugs": {
+    "url": "https://github.com/skrillfer/FullStackReactGraphQLApolloBoost/issues"
+  },
+  "homepage": "https://github.com/skrillfer/FullStackReactGraphQLApolloBoost#readme"
+}
