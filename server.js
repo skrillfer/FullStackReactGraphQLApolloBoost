@@ -2,7 +2,6 @@ const express = require('express');
 
 const mongoose = require('mongoose');
 
-const bodyParser = require('body-parser');
 
 require('dotenv').config({ path: 'variables.env' });
 
@@ -16,7 +15,6 @@ const User   = require('./models/User');
 const { ApolloServer } = require
 ('apollo-server-express');
 
-const { makeExecutableSchema } = require('graphql-tools');
 
 
 const { typeDefs } = require('./schema');
@@ -24,10 +22,10 @@ const { typeDefs } = require('./schema');
 const { resolvers } = require('./resolvers');
 
 //Create Schema
-const schema = makeExecutableSchema({
+/*const schema = makeExecutableSchema({
     typeDefs,
     resolvers
-});
+});*/
 
 //Connects to database
 
@@ -41,10 +39,17 @@ mongo.then(() => console.log('DB connected'))
 const app = express();
 
 const server = new ApolloServer({
-    schema,
+    typeDefs,
+    resolvers,
     context: {
         Recipe,
         User
+    },
+    playground: {
+        endpoint: `http://localhost:4444/graphql`,
+        settings: {
+          'editor.theme': 'light'
+        }
     }
 });
 

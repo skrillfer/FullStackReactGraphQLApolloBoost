@@ -21,7 +21,16 @@ type User @uniqueID{
     joinDate: String
     favorites: [Recipe]
 }
+
 type Query {
-    user: User
+    getAllRecipes: [Recipe]
+}
+
+type Mutation  {
+    addRecipe(name:String!, 
+        description:String!, 
+        category:String!,
+        instructions: String!,
+        username: String): Recipe
 }
 `;
