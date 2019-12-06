@@ -5,6 +5,7 @@ directive @uniqueID(
   ) on OBJECT
 
 type Recipe {
+    _id: ID
     name: String!
     category: String!
     description: String!
@@ -15,6 +16,7 @@ type Recipe {
 }
 
 type User @uniqueID{
+    _id: ID
     username: String!
     password: String!
     email: String!
