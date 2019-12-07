@@ -2,6 +2,7 @@ const express = require('express');
 
 const mongoose = require('mongoose');
 
+const cors = require('cors');
 
 require('dotenv').config({ path: 'variables.env' });
 
@@ -37,6 +38,13 @@ mongo.then(() => console.log('DB connected'))
 // Initializes application
 
 const app = express();
+
+const corsOptions = {
+    origin: 'http://localhost:3000',
+    credentials: true
+}
+
+app.use(cors(corsOptions));
 
 const server = new ApolloServer({
     typeDefs,
