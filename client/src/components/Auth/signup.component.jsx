@@ -23,13 +23,19 @@ class SignUp extends React.Component{
         const { name, value }  = event.target;
         this.setState({ [name] : value });
     }
-    
+
     handleSubmit = (event, signupUser)  => {
         event.preventDefault();
-        signupUser().then(data => {
-            console.log(data);
-            this.clearState();
-        }).catch(error=>error);
+        const { password, passwordConfirmation } = this.state;
+        if(password===passwordConfirmation){
+            signupUser().then(data => {
+                console.log(data);
+                this.clearState();
+            }).catch(error=>error);
+        }else{
+            alert('password don`t match');
+        }
+        
     }
 
     render(){
@@ -49,6 +55,7 @@ class SignUp extends React.Component{
                                     placeholder='Username'
                                     onChange = { this.handleChange }
                                     value = { username }
+                                    required
                                 />
                                 <input 
                                     type='email' 
@@ -56,6 +63,7 @@ class SignUp extends React.Component{
                                     placeholder='Email'
                                     onChange = { this.handleChange }
                                     value = { email }
+                                    required
                                 />
                                 <input 
                                     type='password' 
@@ -63,6 +71,7 @@ class SignUp extends React.Component{
                                     placeholder='Password'
                                     onChange = { this.handleChange }
                                     value = { password }
+                                    required
                                 />
                                 <input 
                                     type='password' 
@@ -70,8 +79,14 @@ class SignUp extends React.Component{
                                     placeholder='Confirm Password'
                                     onChange = { this.handleChange }
                                     value = { passwordConfirmation }
+                                    required
                                 />
-                                <button type='submit' className='button-primary'>Submit </button>
+                                <button 
+                                    disabled = { loading }
+                                    type='submit' 
+                                    className='button-primary'>
+                                    Submit 
+                                </button>
                                 {error && <Error error={ error }/>}
                             </form>
                         )
