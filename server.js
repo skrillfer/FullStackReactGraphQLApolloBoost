@@ -31,7 +31,7 @@ const { resolvers } = require('./resolvers');
 //Connects to database
 
 mongoose.set('useCreateIndex', true);
-const mongo=mongoose.connect(process.env.MONGO_URI,{ useNewUrlParser: true,useUnifiedTopology: true  });
+const mongo=mongoose.connect(process.env.MONGO_URI,{ useNewUrlParser: true });
 mongo.then(() => console.log('DB connected'))
     .catch((err) => console.error(err));
 
