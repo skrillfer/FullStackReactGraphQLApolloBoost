@@ -31,3 +31,13 @@ mutation($username:String!,$email:String!,$password:String!){
     }
 }
 `;
+
+export const SIGNIN_USER = gql`
+mutation($username:String!,$password:String!){
+    signinUser(
+      username:$username, 
+      password:$password){
+      token
+    }
+}
+`;
